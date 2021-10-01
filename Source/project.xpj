@@ -1,0 +1,69 @@
+
+[PROJECT]
+    COMPILE       = xpp
+    COMPILE_FLAGS = /q /p
+    DEBUG         = yes
+    GUI           = yes
+    LINKER        = alink
+    LINK_FLAGS    = 
+    RC_COMPILE    = arc
+    RC_FLAGS      = /v    
+    OBJ_FORMAT    = COFF
+    OBJ_DIR       = OBJ
+    POST_BUILD    = POST_BUILD.cmd
+    G7tools.XPJ
+
+[G7tools.XPJ]
+    G7tools.DLL
+    Main.EXE
+    //G7PrintCOM.EXE
+
+[G7tools.DLL]
+    DEBUG         = no
+    COMPILE_FLAGS = -q -dll:dynamic
+    LINK_FLAGS    = /out:G7tools.DLL 
+    
+// $START-AUTODEPEND
+    G7tools.DEF
+    G7tools.OBJ
+// $STOP-AUTODEPEND
+    G7tools.PRG
+    G7Record.PRG
+    G7CodSer.PRG
+    G7System.PRG
+    G7PrintCOM.PRG
+    G7odbc2excel.PRG
+    G7dbx2excel.PRG
+    G7otools.PRG
+    G7json.PRG
+    TPrintRaw.PRG  
+    TBrowseForFolder.prg
+    G7EMail.prg    
+    G7FreeImage.prg 
+    G7DocId.prg
+    //LoadFromUrl.PRG
+    Adac20b.lib
+    XppUi2.lib
+    XBTBase1.lib
+    XBTBase2.lib
+
+[MAIN.EXE]
+    DEBUG         = yes
+    LINK_FLAGS    = /out:..\EXE\TEST.EXE 
+
+    MAIN.PRG
+    DBESYS.PRG
+    G7tools.lib
+    XBTBase1.lib
+    XBTBase2.lib
+
+//[G7PrintCOM.EXE]
+//    DEBUG         = yes
+//    LINK_FLAGS    = /out:..\EXE\G7PrintCOM.exe /FORCE:UNRESOLVED
+//
+//    G7PrintCOMMain.PRG
+//    DBESYS.PRG
+//    G7tools.lib
+//    XBTBase1.lib
+//    XBTBase2.lib
+    
